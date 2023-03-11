@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Area index{% endblock %}
+
+{% block body %}
+    <h1>Area index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>DNI</th>
+                <th>Domicilio</th>
+                <th>Contacto</th>
+                <th>Email</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.nombre }}</td>
+                <td>{{ user.apellido }}</td>
+                <td>{{ user.dni }}</td>
+                <td>{{ user.domicilio }}</td>
+                <td>{{ user.contacto }}</td>
+                <td>{{ user.email }}</td>
+                
+                
+                
+                
+                <td>
+                   
+                    <a href="{{ path('app_registration_edit', {'id': user.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_register') }}">Create new</a>
+{% endblock %}

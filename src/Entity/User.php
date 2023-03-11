@@ -29,6 +29,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
+    #[ORM\Column(length: 100, nullable: true)]
+    private ?string $nombre = null;
+
+    #[ORM\Column(length: 100)]
+    private ?string $apellido = null;
+
+    #[ORM\Column(length: 100)]
+    private ?string $dni = null;
+
+    #[ORM\Column(length: 150, nullable: true)]
+    private ?string $domicilio = null;
+
+    #[ORM\Column(length: 100, nullable: true)]
+    private ?string $contacto = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -97,5 +112,65 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getNombre(): ?string
+    {
+        return $this->nombre;
+    }
+
+    public function setNombre(?string $nombre): self
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    public function getApellido(): ?string
+    {
+        return $this->apellido;
+    }
+
+    public function setApellido(string $apellido): self
+    {
+        $this->apellido = $apellido;
+
+        return $this;
+    }
+
+    public function getDni(): ?string
+    {
+        return $this->dni;
+    }
+
+    public function setDni(string $dni): self
+    {
+        $this->dni = $dni;
+
+        return $this;
+    }
+
+    public function getDomicilio(): ?string
+    {
+        return $this->domicilio;
+    }
+
+    public function setDomicilio(?string $domicilio): self
+    {
+        $this->domicilio = $domicilio;
+
+        return $this;
+    }
+
+    public function getContacto(): ?string
+    {
+        return $this->contacto;
+    }
+
+    public function setContacto(?string $contacto): self
+    {
+        $this->contacto = $contacto;
+
+        return $this;
     }
 }
