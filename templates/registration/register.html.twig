@@ -12,11 +12,15 @@
         {{ form_row(registrationForm.domicilio) }}
         {{ form_row(registrationForm.contacto) }}
         {{ form_row(registrationForm.email) }}
+        {{ form_row(registrationForm.area) }}
+
         {{ form_row(registrationForm.plainPassword, {
             label: 'Password'
         }) }}
         {{ form_row(registrationForm.agreeTerms) }}
 
-        <button type="submit" class="btn">Register</button>
+
+
+          <button class="btn btn-primary" style="margin: 10px" type="submit">Register</button>
     {{ form_end(registrationForm) }}
 {% endblock %}

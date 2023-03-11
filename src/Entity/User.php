@@ -44,6 +44,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 100, nullable: true)]
     private ?string $contacto = null;
 
+    #[ORM\ManyToOne(inversedBy: 'users')]
+    private ?Area $area = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -170,6 +173,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setContacto(?string $contacto): self
     {
         $this->contacto = $contacto;
+
+        return $this;
+    }
+
+    public function getArea(): ?Area
+    {
+        return $this->area;
+    }
+
+    public function setArea(?Area $area): self
+    {
+        $this->area = $area;
 
         return $this;
     }
