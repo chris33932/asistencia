@@ -14,24 +14,18 @@ use Symfony\Component\Validator\Constraints\DateTime;
 use Symfony\Component\Validator\Constraints\Time;
 
 
-#[Route('/asistencia')]
-class AsistenciaController extends AbstractController
+#[Route('/asistencia/admin')]
+class AsistenciaAdminController extends AbstractController
 {
-    #[Route('/', name: 'app_asistencia_index', methods: ['GET'])]
+    #[Route('/', name: 'app_asistencia_admin_index', methods: ['GET'])]
    
    
    
     public function index(AsistenciaRepository $asistenciaRepository): Response
     {   
-        $usuario=$this->getUser()->getId();
-        return $this->render('asistencia/index.html.twig', [
-            'asistencias' => $asistenciaRepository->findBy(
-                array('user'=>$usuario),   //$where
-                array('fecha'=>'DESC',
-                       'id' =>'DESC'),   //$orderBy
-                        5,              //$limit
-                0,                     //$offset
-            ),
+       
+        return $this->render('asistencia/indexAdmin.html.twig', [
+            'asistencias' => $asistenciaRepository->findAll(),
         ]);
     }
 

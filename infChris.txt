@@ -1,0 +1,2 @@
+http://localhost/asistencia/public/index.php/asistencia/admin/
+para acceder a la lista completa de asistencia

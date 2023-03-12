@@ -1,42 +1,36 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Asistencia {% endblock %}
+{% block title %}Asistencia index{% endblock %}
 
 {% block body %}
-            {% if app.user %}
-                <div class="mb-3">
-                   <h2>Registro Asistencia <strong> {{ app.user.apellido }} - {{ app.user.nombre }}</strong> 
-                   <a href="{{ path('app_logout') }}"></a></h2>
-                </div>
-            {% endif %}
+    <h1>Asistencia</h1>
 
     <table class="table">
         <thead>
             <tr>
-               
+               <th>Id</th>
                 <th>IdEmp</th>
                 <th>Nombre</th>
                 <th>Apellido</th>
-                <th>Area</th>
                 <th>Fecha</th>
                 <th>Hora</th>
                 <th>Registro</th>
-               
+                <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for asistencium in asistencias %}
             <tr>
+                <td>{{ asistencium.id }}</td>
                 <td>{{ asistencium.user }}</td>
                 <td>{{ asistencium.user.nombre }}</td>
-                <td>{{ asistencium.user.apellido }}</td>
-                <td>{{ asistencium.user.area }}</td>
+                 <td>{{ asistencium.user.apellido }}</td>
                 <td>{{ asistencium.fecha ? asistencium.fecha|date('Y-m-d') : '' }}</td>
                 <td>{{ asistencium.time ? asistencium.time|date('H:i:s') : '' }}</td>
                 <td>{{ asistencium.registro }}</td>
                 <td>
-                    {#<a href="{{ path('app_asistencia_show', {'id': asistencium.id}) }}">show</a>#}
-                    {#<a href="{{ path('app_asistencia_edit', {'id': asistencium.id}) }}">edit</a>#}
+                    <a href="{{ path('app_asistencia_show', {'id': asistencium.id}) }}">show</a>
+                    <a href="{{ path('app_asistencia_edit', {'id': asistencium.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -47,5 +41,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_asistencia_new') }}"  class="btn btn-link"><strong>Volver</strong></a>
+    <a href="{{ path('app_asistencia_new') }}">Create new</a>
 {% endblock %}
