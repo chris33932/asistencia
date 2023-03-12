@@ -12,6 +12,7 @@
                 <th>IdEmp</th>
                 <th>Nombre</th>
                 <th>Apellido</th>
+                <th>Area</th>
                 <th>Fecha</th>
                 <th>Hora</th>
                 <th>Registro</th>
@@ -25,6 +26,8 @@
                 <td>{{ asistencium.user }}</td>
                 <td>{{ asistencium.user.nombre }}</td>
                  <td>{{ asistencium.user.apellido }}</td>
+                 <td>{{ asistencium.user.area }}</td>
+
                 <td>{{ asistencium.fecha ? asistencium.fecha|date('Y-m-d') : '' }}</td>
                 <td>{{ asistencium.time ? asistencium.time|date('H:i:s') : '' }}</td>
                 <td>{{ asistencium.registro }}</td>
