@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -46,6 +48,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\ManyToOne(inversedBy: 'users')]
     private ?Area $area = null;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Asistencia::class)]
+    private Collection $asistencias;
+
+    public function __construct()
+    {
+        $this->asistencias = new ArrayCollection();
+    }
+
+    
+    public function __toString(){
+        return $this->id;
+    }
+
+
+
 
     public function getId(): ?int
     {
@@ -185,6 +203,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setArea(?Area $area): self
     {
         $this->area = $area;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Asistencia>
+     */
+    public function getAsistencias(): Collection
+    {
+        return $this->asistencias;
+    }
+
+    public function addAsistencia(Asistencia $asistencia): self
+    {
+        if (!$this->asistencias->contains($asistencia)) {
+            $this->asistencias->add($asistencia);
+            $asistencia->setEmpleado($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAsistencia(Asistencia $asistencia): self
+    {
+        if ($this->asistencias->removeElement($asistencia)) {
+            // set the owning side to null (unless already changed)
+            if ($asistencia->getEmpleado() === $this) {
+                $asistencia->setEmpleado(null);
+            }
+        }
 
         return $this;
     }

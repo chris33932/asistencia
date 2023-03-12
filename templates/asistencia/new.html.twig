@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Asistencia{% endblock %}
+{% block header %}
+             
+            {% if app.user %}
+                <div class="mb-3">
+                   <h2>Se encuentra logueado como <strong> {{ app.user.apellido }}</strong>, 
+                   <a href="{{ path('app_logout') }}">Salir</a></h2>
+                </div>
+            {% endif %}
+
+{% endblock %}
+  
+{% block stylesheets %}
+ <link rel="stylesheet" href="{{ asset('styles/estilos.css')}}">
+      {#{{ encore_entry_link_tags('app') }}#}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/main.js')}}"></script>
+      {#{{ encore_entry_script_tags('app') }}#}
+{% endblock %}
+{% block body %}
+       <div class="container" style="background-color:  rgba(133, 143, 137,0.1); padding-top:60px">
+            <main class="fecha">
+                <h2 class="fecha__completa" id="fecha__completa"> ::</h2>
+                <div class="hora">
+                    <div class="hora__estado" id="hora__estado">
+                       ::
+                    </div>
+                    <div class="hora__tiempo" id="hora__tiempo">
+                        :::
+                    </div>
+                </div>
+            </main>
+            
+            {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <button class="btn btn-primary" style="margin: 20px" type="submit">{{ button_label|default('Save') }}</button>
+            {{ form_end(form) }}
+
+        </div>
+
+
+<div>
+{#<div style="height: 85px background-color: rgba(255,0,0,.1);">#}
+
+
+  {#{{ include('asistencia/_form.html.twig') }}#}
+  {# <a href="{{ path('app_asistencia_index') }}">back to list</a>#}
+
+
+{#<div class="d-grid gap-4" style="with: 85px">
+  <button class="btn btn-lg btn-success" type="button">Block button</button>
+  <button class="btn btn-lg btn-danger" style="marigin-top: 25px" type="button">Block button</button>
+</div>#}
+
+</div>
+
+{% endblock %}
