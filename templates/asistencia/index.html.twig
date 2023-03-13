@@ -3,6 +3,7 @@
 {% block title %}Asistencia {% endblock %}
 
 {% block body %}
+<div class="container">
             {% if app.user %}
                 <div class="mb-3">
                    <h2>Registro Asistencia <strong> {{ app.user.apellido }} - {{ app.user.nombre }}</strong> 
@@ -48,4 +49,5 @@
     </table>
 
     <a href="{{ path('app_asistencia_new') }}"  class="btn btn-link"><strong>Volver</strong></a>
+</div>
 {% endblock %}
