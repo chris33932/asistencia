@@ -44,7 +44,7 @@
 
 {% block body %}
 
-<div class="container" style=" padding-top:80px">
+<div class="container" style=" padding-top:50px;width:60%">
         <form method="post">
             {% if error %}
                 <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -80,8 +80,11 @@
             <button class="btn btn-primary" style="margin: 10px" type="submit">
                 Ingresar
             </button>
+
         </form>
+
 </div>
 
-<span class="text-muted" style="padding:15px">Resistencia, Chaco  -  {{ "now"|date("d/m/Y") }}</span>
+        <span class="text-muted" style="padding:15px">Resistencia, Chaco  -  {{ "now"|date("d/m/Y") }}</span>
+
 {% endblock %}
