@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Asistencia{% endblock %}
+{% block title %}Asistencia{% endblock %}
 {% block header %}
  <div class="container">   
             {% if app.user %}
-                <div class="mb-3">
+                <div class="mb-3" style="padding:15px">
                    <h2>Se encuentra logueado como <strong> {{ app.user.apellido }}</strong>, 
                    <a href="{{ path('app_logout') }}"><strong>Salir</strong></a></h2>
                 </div>
@@ -22,7 +22,7 @@
       {#{{ encore_entry_script_tags('app') }}#}
 {% endblock %}
 {% block body %}
-       <div class="container" style="background-color:  rgba(133, 143, 137,0.1); padding-top:60px">
+       <div class="container rounded" style="background-color:  rgba(133, 143, 137,0.1); padding-top:60px">
             <main class="fecha">
                 <h2 class="fecha__completa" id="fecha__completa"> ::</h2>
                 <div class="hora">
@@ -37,7 +37,7 @@
             
             {{ form_start(form) }}
                 {{ form_widget(form) }}
-                <button class="btn btn-primary" style="margin: 20px" type="submit">{{ button_label|default('Save') }}</button>
+                <button class="btn btn-primary" style="margin: 20px" type="submit">{{ button_label|default('Guardar') }}</button>
             {{ form_end(form) }}
 
         </div>

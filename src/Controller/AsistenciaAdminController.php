@@ -25,7 +25,14 @@ class AsistenciaAdminController extends AbstractController
     {   
        
         return $this->render('asistencia/indexAdmin.html.twig', [
-            'asistencias' => $asistenciaRepository->findAll(),
+            'asistencias' => $asistenciaRepository->findBy(
+                array(),              //$where
+                array('fecha'=>'DESC',
+                       'user' =>'DESC'
+                       ),  //$orderBy
+                //10,                 //$limit
+                //0,                  //$offset
+            ),
         ]);
     }
 
@@ -34,9 +41,6 @@ class AsistenciaAdminController extends AbstractController
     {
         $asistencium = new Asistencia();
         $user = $this->getUser();
-        //var_dump($userid);
-        //$username=serialize($userid);
-        //var_dump($username);die;
         $asistencium-> setUser($user);
         $asistencium->setFecha(new \DateTime(('now')));
         $asistencium->setTime(new \DateTime(('now')));

@@ -1,11 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Asistencia {% endblock %}
-
+{% block stylesheets %}
+ <link rel="stylesheet" href="{{ asset('styles/trAsist.css')}}">
+      {#{{ encore_entry_link_tags('app') }}#}
+{% endblock %}
 {% block body %}
 <div class="container">
             {% if app.user %}
-                <div class="mb-3">
+                <div class="mb-3" style="padding:10px">
                    <h2>Registro Asistencia <strong> {{ app.user.apellido }} - {{ app.user.nombre }}</strong> 
                    <a href="{{ path('app_logout') }}"></a></h2>
                 </div>
@@ -14,11 +17,9 @@
     <table class="table">
         <thead>
             <tr>
-               
-                <th>IdEmp</th>
+                         
                 <th>Nombre</th>
                 <th>Apellido</th>
-                <th>Area</th>
                 <th>Fecha</th>
                 <th>Hora</th>
                 <th>Registro</th>
@@ -28,11 +29,10 @@
         <tbody>
         {% for asistencium in asistencias %}
             <tr>
-                <td>{{ asistencium.user }}</td>
-                <td>{{ asistencium.user.nombre }}</td>
+                 <td>{{ asistencium.user.nombre }}</td>
                 <td>{{ asistencium.user.apellido }}</td>
-                <td>{{ asistencium.user.area }}</td>
-                <td>{{ asistencium.fecha ? asistencium.fecha|date('Y-m-d') : '' }}</td>
+               
+                <td>{{ asistencium.fecha ? asistencium.fecha|date('d-m-Y') : '' }}</td>
                 <td>{{ asistencium.time ? asistencium.time|date('H:i:s') : '' }}</td>
                 <td>{{ asistencium.registro }}</td>
                 <td>
@@ -50,4 +50,5 @@
 
     <h2><a href="{{ path('app_logout') }}"  ><strong>Salir</strong></a><h2>
 </div>
+
 {% endblock %}
